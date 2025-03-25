@@ -1,0 +1,62 @@
+<!-- Corrige los nombres de propiedades -->
+<section class="tracking-container container">
+    <h1 class="heading-1">Seguimiento de Reparación #{{ repairRequest.id }}</h1>
+  
+    <!-- Barra de estado -->
+    <div class="route-status">
+      <div class="status-bar">
+        <div [class.active]="getCurrentStatusClass('collection')">Recogida</div>
+        <div [class.active]="getCurrentStatusClass('transport')">En Taller</div>
+        <div [class.active]="getCurrentStatusClass('diagnosis')">Diagnóstico</div>
+        <div [class.active]="getCurrentStatusClass('repair')">Reparación</div>
+        <div [class.active]="getCurrentStatusClass('return')">Devolución</div>
+      </div>
+      <div class="progress-bar">
+        <div [style.width.%]="getProgressPercentage()"></div>
+      </div>
+    </div>
+  
+    <!-- Acciones pendientes (corregir pendingAction -> pendingActions) -->
+    <div *ngIf="repairRequest.pendingActions.length > 0" class="pending-actions">
+      <h3>Acciones Requieren su Aprobación:</h3>
+      <div *ngFor="let part of repairRequest.pendingActions" class="part-card">
+        <h4>{{ part.name }}</h4>
+        <p>{{ part.description }}</p>
+        <p>Costo: {{ part.cost | currency:'BOB':'Bs ' }}</p>
+        <div class="action-buttons">
+          <button (click)="respondToPart(part.id, 'approved')">Aceptar</button>
+          <button (click)="respondToPart(part.id, 'rejected')">Rechazar</button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Historial de ubicaciones (locationHistory -> locationUpdates) -->
+    <div class="location-updates">
+      <h2>Ruta del Equipo</h2>
+      <div *ngFor="let entry of repairRequest.locationUpdates" class="location-entry">
+        <span class="time">{{ entry.timestamp | date:'shortTime' }}</span>
+        <span class="location">{{ entry.location }}</span>
+        <span class="status-badge">{{ entry.status }}</span>
+      </div>
+    </div>
+  
+    <!-- Actualizaciones del técnico (technicianUpdates -> technicianLogs) -->
+    <div class="technician-logs">
+      <h2>Registro del Técnico</h2>
+      <div *ngFor="let log of repairRequest.technicianLogs" class="log-entry">
+        <div class="log-header">
+          <span class="timestamp">{{ log.timestamp | date:'medium' }}</span>
+        </div>
+        <p class="log-message">{{ log.message }}</p>
+        <div *ngIf="log.images" class="log-images">
+          <!--<img *ngFor="let img of log.images" [src]="img" [alt]="'Imagen de reparación ' + log.timestamp"> -->
+        </div>
+      </div>
+    </div>
+  
+    <!-- Costo total -->
+    <div class="total-cost">
+      <h3>Costo Estimado Total:</h3>
+      <p>{{ repairRequest.costEstimate | currency:'BOB':'Bs ' }}</p>
+    </div>
+  </section>

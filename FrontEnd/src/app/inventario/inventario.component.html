@@ -1,0 +1,58 @@
+<div class="inventario-container">
+    <h2>Inventario</h2>
+  
+    <!-- Tabla con el inventario -->
+    <table mat-table [dataSource]="inventario">
+      <ng-container matColumnDef="nombreEquipo">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let inventario"> {{ inventario.nombreEquipo }} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="cantidadDisponible">
+        <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+        <td mat-cell *matCellDef="let inventario"> {{ inventario.cantidadDisponible }} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="precioUnitario">
+        <th mat-header-cell *matHeaderCellDef> Precio </th>
+        <td mat-cell *matCellDef="let inventario"> {{ inventario.precioUnitario | currency }} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="imagen">
+        <th mat-header-cell *matHeaderCellDef> Imagen </th>
+        <td mat-cell *matCellDef="let inventario">
+          <div class="imagen-container">
+            <img [src]="inventario.imagen" alt="imagen" class="imagen-producto">
+          </div>
+        </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+        <td mat-cell *matCellDef="let inventario">
+          <button (click)="onEdit(inventario)">Editar</button>
+          <button (click)="onDelete(inventario.idInventario)">Eliminar</button>
+        </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+  
+  <!-- Formulario de edición -->
+  <div *ngIf="selectedInventario" class="formulario">
+    <h3>Editar Producto</h3>
+    <form (ngSubmit)="onSubmit()">
+      <label>Nombre:</label>
+      <input [(ngModel)]="selectedInventario.nombreEquipo" name="nombreEquipo" required>
+      <label>Cantidad:</label>
+      <input [(ngModel)]="selectedInventario.cantidadDisponible" name="cantidadDisponible" required type="number">
+      <label>Precio:</label>
+      <input [(ngModel)]="selectedInventario.precioUnitario" name="precioUnitario" required type="number">
+      <label>Imagen URL:</label>
+      <input [(ngModel)]="selectedInventario.imagen" name="imagen" required>
+      <button type="submit">Guardar</button>
+    </form>
+  </div>
+  

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BytBuilder - Chat de Ayuda</title>
+    <link rel="stylesheet" href="/css/styles_chat_ayuda.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <button class="user-button">Crear Cuenta</button>
+            <button class="user-button">Iniciar Sesión</button>
+        </div>
+    </header>
+
+    <section class="main-title">
+        <h1>Chat de Ayuda</h1>
+        <p>Solucionamos tus problemas básicos de hardware de forma gratuita. ¿En qué podemos ayudarte?</p>
+    </section>
+
+    <section class="chatbox">
+        <div id="chat-area">
+            <!-- Aquí aparecerán los mensajes -->
+        </div>
+        <textarea id="user-message" placeholder="Escribe tu mensaje aquí..."></textarea>
+        <button onclick="sendMessage()">Enviar</button>
+    </section>
+
+    <section class="donation">
+        <p>Si te ha sido útil, considera donar para que sigamos mejorando este servicio.</p>
+        <button onclick="donate()">Donar</button>
+    </section>
+
+    <script>
+        function sendMessage() {
+            const message = document.getElementById('user-message').value;
+            const chatArea = document.getElementById('chat-area');
+            const newMessage = document.createElement('div');
+            newMessage.classList.add('message');
+            newMessage.innerHTML = `<strong>Tú:</strong> ${message}`;
+            chatArea.appendChild(newMessage);
+            document.getElementById('user-message').value = '';
+        }
+
+        function donate() {
+            window.location.href = "https://www.paypal.com/donate";
+        }
+    </script>
+</body>
+</html>

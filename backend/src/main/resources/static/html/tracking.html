@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BytBuilder - Tracking de Reparación</title>
+    <link rel="stylesheet" href="/css/styles_tracking.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <button class="user-button">Crear Cuenta</button>
+            <button class="user-button">Iniciar Sesión</button>
+        </div>
+    </header>
+
+    <section class="main-title">
+        <h1>Tracking de Reparación</h1>
+    </section>
+
+    <!-- Botones de navegación hacia las diferentes páginas -->
+    <section class="navigation">
+        <div class="nav-buttons">
+            <a href="inicio.html"><button>Volver al Inicio</button></a>
+            <a href="comparacion.html"><button>Comparación de Componentes y Precios</button></a>
+        </div>
+    </section>
+
+    <section class="tracking-info">
+        <h2>Estado de tu Reparación</h2>
+        <div class="progress-bar">
+            <div class="progress" style="width: 50%;"></div>
+        </div>
+        <div class="notification">
+            <h3>Notificaciones:</h3>
+            <ul id="notification-list">
+                <li>Reparación en progreso...</li>
+            </ul>
+        </div>
+    </section>
+
+    <script>
+        let progress = 50; // Initial progress of the repair
+
+        // Function to simulate technician actions and notify user
+        function updateProgress() {
+            if (progress < 100) {
+                progress += 10; // Simulate progress increment
+                document.querySelector('.progress').style.width = progress + '%';
+                let notification = document.createElement('li');
+                notification.textContent = "El técnico está trabajando en tu reparación.";
+                document.getElementById('notification-list').appendChild(notification);
+            } else {
+                let finalNotification = document.createElement('li');
+                finalNotification.textContent = "¡Tu reparación ha finalizado con éxito!";
+                document.getElementById('notification-list').appendChild(finalNotification);
+            }
+        }
+
+        // Simulate technician actions every 3 seconds
+        setInterval(updateProgress, 3000);
+
+        // Simulate a problem notification (Example: a damaged component)
+        setTimeout(() => {
+            let damageNotification = document.createElement('li');
+            damageNotification.textContent = "¡Se ha detectado un problema con tu componente! ¿Deseas reemplazarlo?";
+            document.getElementById('notification-list').appendChild(damageNotification);
+        }, 8000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+/* Reseteo básico de márgenes y padding */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Cuerpo de la página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Fondo negro */
+    color: white;
+}
+
+/* Títulos */
+h1, h2 {
+    color: #00FFFF; /* Azul eléctrico */
+}
+
+/* Estilo para los botones de navegación */
+.nav-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #00FFFF; /* Azul eléctrico */
+    color: #121212; /* Texto en negro */
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+/* Efecto al pasar el mouse */
+button:hover {
+    background-color: #FFD700; /* Dorado */
+    transform: scale(1.05); /* Efecto de agrandado */
+}
+
+/* Estilo para las notificaciones */
+.notification {
+    margin-top: 20px;
+    background-color: #333;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.notification ul {
+    list-style: none;
+}
+
+.notification li {
+    margin-bottom: 10px;
+}
+
+/* Barra de progreso */
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #333;
+    margin-top: 20px;
+}
+
+.progress {
+    height: 100%;
+    background-color: #FFD700; /* Dorado */
+}

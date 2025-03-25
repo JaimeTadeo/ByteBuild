@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BytBuilder - Comparación de Rendimiento</title>
+    <link rel="stylesheet" href="/css/styles_comparacion_rendimiento.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <button class="user-button">Crear Cuenta</button>
+            <button class="user-button">Iniciar Sesión</button>
+        </div>
+    </header>
+
+    <section class="main-title">
+        <h1>Comparación de Rendimiento</h1>
+    </section>
+
+    <section class="comparison-form">
+        <input type="text" id="cpu-comparison" placeholder="Selecciona tu CPU">
+        <input type="text" id="gpu-comparison" placeholder="Selecciona tu GPU">
+        <button onclick="comparePerformance()">Comparar Rendimiento</button>
+    </section>
+
+    <section class="comparison-result" id="comparison-result">
+        <!-- Aquí se mostrará la comparación -->
+    </section>
+
+    <script>
+        function comparePerformance() {
+            const cpu = document.getElementById('cpu-comparison').value;
+            const gpu = document.getElementById('gpu-comparison').value;
+
+            let result = 'El rendimiento comparado no está disponible.';
+
+            if (cpu === 'Intel i9' && gpu === 'RTX 3080') {
+                result = 'Rendimiento excepcional para aplicaciones profesionales y juegos AAA';
+            }
+
+            document.getElementById('comparison-result').innerHTML = result;
+        }
+    </script>
+</body>
+</html>

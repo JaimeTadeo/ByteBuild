@@ -1,0 +1,48 @@
+<section class="comparacion-container container">
+  <h1 class="heading-1">Comparador de Componentes</h1>
+  
+  <!-- Buscador -->
+  <div class="search-comparacion">
+    <input 
+      type="text" 
+      [formControl]="searchControl"
+      placeholder="Buscar componentes..."
+      class="search-input"
+    >
+    
+    <!-- Resultados de búsqueda -->
+    <div class="resultados-busqueda">
+      <div 
+        *ngFor="let componente of resultadosBusqueda"
+        class="resultado-item"
+        (click)="agregarAComparacion(componente)"
+      >
+    
+        <span>{{ componente.nombre }}</span>
+        <span class="precio">{{ componente.precio | currency:'USD':'symbol':'1.0-0' }}</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Zona de comparación -->
+  <div class="zona-comparacion">
+    <div 
+      *ngFor="let componente of componentesSeleccionados; let i = index"
+      class="componente-card"
+    >
+      <button class="btn-eliminar" (click)="eliminarDeComparacion(i)">×</button>
+      <h3>{{ componente.nombre }}</h3>
+      
+      <div class="especificaciones">
+        <div *ngFor="let espec of Object.keys(componente.especificaciones)">
+          <strong>{{ espec }}:</strong> 
+          {{ componente.especificaciones[espec] }}
+        </div>
+      </div>
+      
+      <div class="precio">
+        {{ componente.precio | currency:'USD':'symbol':'1.0-0' }}
+      </div>
+    </div>
+  </div>
+</section>
