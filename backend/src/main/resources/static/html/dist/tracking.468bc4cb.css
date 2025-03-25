@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: #fff;
+  background-color: #121212;
+  font-family: Arial, sans-serif;
+}
+
+h1, h2 {
+  color: #0ff;
+}
+
+.nav-buttons {
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+  display: flex;
+}
+
+button {
+  color: #121212;
+  cursor: pointer;
+  background-color: #0ff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  transition: background-color .3s, transform .3s;
+}
+
+button:hover {
+  background-color: gold;
+  transform: scale(1.05);
+}
+
+.notification {
+  background-color: #333;
+  border-radius: 5px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.notification ul {
+  list-style: none;
+}
+
+.notification li {
+  margin-bottom: 10px;
+}
+
+.progress-bar {
+  background-color: #333;
+  width: 100%;
+  height: 20px;
+  margin-top: 20px;
+}
+
+.progress {
+  background-color: gold;
+  height: 100%;
+}
+/*# sourceMappingURL=tracking.468bc4cb.css.map */

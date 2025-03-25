@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BytBuilder - Prev. Rendimiento</title>
+    <link rel="stylesheet" href="/css/styles_rendimiento.css">
+</head>
+<body>
+    <!-- Barra de Navegación Superior -->
+    <header>
+        <div class="container">
+            <div class="navbar">
+                <a href="inicio.html">Inicio</a>
+                <a href="comparacion_componentes.html">Comparación Componentes</a>
+                <a href="comparacion_precios.html">Comparación Precios</a>
+                <a href="rendimiento.html">Prev. Rendimiento</a>
+                <a href="comparacion_rendimiento.html">Comp. Rendimiento</a>
+                <a href="chat_ayuda.html">Chat de Ayuda</a>
+                <a href="mantenimiento.html">Mantenimiento</a>
+                <a href="reciclaje.html">Reciclaje</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="main-title">
+        <h1>Previzualización del Rendimiento</h1>
+    </section>
+
+    <section class="performance-form">
+        <input type="text" id="cpu-performance" placeholder="Selecciona tu CPU">
+        <input type="text" id="gpu-performance" placeholder="Selecciona tu GPU">
+        <button onclick="previewPerformance()">Ver Rendimiento</button>
+    </section>
+
+    <section class="performance-result" id="performance-result">
+        <!-- Aquí se mostrará el rendimiento simulado -->
+    </section>
+
+    <script>
+        function previewPerformance() {
+            const cpu = document.getElementById('cpu-performance').value;
+            const gpu = document.getElementById('gpu-performance').value;
+
+            let performance = 'El rendimiento no está disponible para estos componentes.';
+
+            if (cpu === 'Intel i7' && gpu === 'RTX 3070') {
+                performance = '¡Rendimiento óptimo para juegos en 4K!';
+            }
+
+            document.getElementById('performance-result').innerHTML = performance;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BytBuilder - Compatibilidad</title>
+    <link rel="stylesheet" href="/css/styles_compatibilidad.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <button class="user-button">Crear Cuenta</button>
+            <button class="user-button">Iniciar Sesión</button>
+        </div>
+    </header>
+
+    <section class="main-title">
+        <h1>Previzualización de Compatibilidad de Componentes</h1>
+    </section>
+
+    <section class="compatibility-form">
+        <input type="text" id="cpu" placeholder="Seleccionar CPU">
+        <input type="text" id="motherboard" placeholder="Seleccionar Placa Base">
+        <button onclick="checkCompatibility()">Verificar Compatibilidad</button>
+    </section>
+
+    <section class="compatibility-result" id="compatibility-result">
+        <!-- Aquí se mostrará si los componentes son compatibles -->
+    </section>
+
+    <script>
+        function checkCompatibility() {
+            const cpu = document.getElementById('cpu').value;
+            const motherboard = document.getElementById('motherboard').value;
+
+            let result = '';
+            if (cpu === 'Intel i9' && motherboard === 'Z490') {
+                result = '¡Compatibilidad Aprobada!';
+            } else {
+                result = 'Los componentes no son compatibles.';
+            }
+
+            document.getElementById('compatibility-result').innerHTML = result;
+        }
+    </script>
+</body>
+</html>

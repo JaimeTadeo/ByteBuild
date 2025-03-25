@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BytBuilder - Comparación</title>
+    <link rel="stylesheet" href="/comparacion.25a0dd36.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <button class="user-button">Crear Cuenta</button>
+            <button class="user-button">Iniciar Sesión</button>
+        </div>
+    </header>
+
+    <section class="main-title">
+        <h1>Comparación de Componentes y Precios</h1>
+    </section>
+
+    <section class="navigation">
+        <div class="nav-buttons">
+            <a href="/inicio.html"><button>Volver al Inicio</button></a>
+            <a href="/tracking.html"><button>Tracking de Reparación</button></a>
+        </div>
+    </section>
+
+    <section class="comparison-section">
+        <h2>Selecciona los productos a comparar</h2>
+        <div class="input-container">
+            <input type="text" id="search-name" placeholder="Buscar por nombre..." oninput="filterProducts()">
+            <select id="category" onchange="filterProducts()">
+                <option value="all">Todas las Categorías</option>
+                <option value="cpu">CPU</option>
+                <option value="ram">RAM</option>
+                <option value="gpu">GPU</option>
+            </select>
+            <select id="store" onchange="filterProducts()">
+                <option value="all">Todas las Tiendas</option>
+                <option value="Tienda A">Tienda A</option>
+                <option value="Tienda B">Tienda B</option>
+                <option value="Tienda C">Tienda C</option>
+            </select>
+        </div>
+
+        <div id="product-list"></div>
+
+        <h2>Comparación</h2>
+        <table id="comparison-table">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Categoría</th>
+                    <th>Especificaciones</th>
+                    <th>Tienda</th>
+                    <th>Precio</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </section>
+
+    <script>const products = [
+    {
+        name: "CPU Intel i9",
+        category: "cpu",
+        specs: "16 n\xfacleos, 5.2GHz",
+        stores: [
+            {
+                name: "Tienda A",
+                price: 400
+            },
+            {
+                name: "Tienda B",
+                price: 420
+            }
+        ]
+    },
+    {
+        name: "CPU AMD Ryzen 9",
+        category: "cpu",
+        specs: "12 n\xfacleos, 4.8GHz",
+        stores: [
+            {
+                name: "Tienda A",
+                price: 350
+            },
+            {
+                name: "Tienda C",
+                price: 360
+            }
+        ]
+    },
+    {
+        name: "RAM Corsair Vengeance",
+        category: "ram",
+        specs: "16GB, 3200MHz",
+        stores: [
+            {
+                name: "Tienda B",
+                price: 80
+            },
+            {
+                name: "Tienda C",
+                price: 85
+            }
+        ]
+    },
+    {
+        name: "GPU NVIDIA RTX 3080",
+        category: "gpu",
+        specs: "10GB GDDR6X",
+        stores: [
+            {
+                name: "Tienda A",
+                price: 800
+            },
+            {
+                name: "Tienda B",
+                price: 820
+            }
+        ]
+    }
+];
+let selectedProducts = [];
+function filterProducts() {
+    const query = document.getElementById("search-name").value.toLowerCase();
+    const selectedCategory = document.getElementById("category").value;
+    const selectedStore = document.getElementById("store").value;
+    const productList = document.getElementById("product-list");
+    productList.innerHTML = "";
+    // Filtrar productos por categoría, nombre, y tienda
+    products.forEach((product)=>{
+        const filteredStores = product.stores.filter((store)=>selectedStore === "all" || store.name === selectedStore);
+        if ((selectedCategory === "all" || product.category === selectedCategory) && product.name.toLowerCase().includes(query)) // Si se selecciona "Todas las Tiendas", mostrar todos los productos y tiendas
+        {
+            if (selectedStore === "all" || filteredStores.length > 0) filteredStores.forEach((store)=>{
+                const productDiv = document.createElement("div");
+                productDiv.classList.add("product-item");
+                productDiv.innerHTML = `
+                                <h3>${product.name}</h3>
+                                <p>${product.specs}</p>
+                                <p><strong>${store.name}</strong>: $${store.price}</p>
+                                <button onclick="addToComparison('${product.name}', '${store.name}', ${store.price})">Comparar</button>
+                            `;
+                productList.appendChild(productDiv);
+            });
+        }
+    });
+}
+function addToComparison(productName, storeName, price) {
+    const product = products.find((p)=>p.name === productName);
+    const exists = selectedProducts.some((p)=>p.name === productName && p.store === storeName);
+    if (!exists) {
+        selectedProducts.push({
+            name: product.name,
+            category: product.category,
+            specs: product.specs,
+            store: storeName,
+            price: price
+        });
+        updateComparisonTable();
+    }
+}
+function removeFromComparison(productName, storeName) {
+    selectedProducts = selectedProducts.filter((p)=>!(p.name === productName && p.store === storeName));
+    updateComparisonTable();
+}
+function updateComparisonTable() {
+    const tableBody = document.querySelector("#comparison-table tbody");
+    tableBody.innerHTML = "";
+    selectedProducts.forEach((product)=>{
+        const row = document.createElement("tr");
+        row.innerHTML = `
+                    <td>${product.name}</td>
+                    <td>${product.category}</td>
+                    <td>${product.specs}</td>
+                    <td>${product.store}</td>
+                    <td>$${product.price}</td>
+                    <td><button onclick="removeFromComparison('${product.name}', '${product.store}')">\u{274C}</button></td>
+                `;
+        tableBody.appendChild(row);
+    });
+}
+filterProducts(); // Inicializar la búsqueda al cargar la página
+
+</script>
+<script src="/comparacion.49dec3fb.js"></script></body>
+</html>

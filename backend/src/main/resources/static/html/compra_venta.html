@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BytBuilder - Compra y Venta</title>
+    <link rel="stylesheet" href="/css/styles_compra_venta.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <button class="user-button">Crear Cuenta</button>
+            <button class="user-button">Iniciar Sesión</button>
+        </div>
+    </header>
+
+    <section class="main-title">
+        <h1>Compra y Venta de Componentes</h1>
+    </section>
+
+    <section class="navigation">
+        <div class="nav-buttons">
+            <a href="inicio.html"><button>Volver al Inicio</button></a>
+            <a href="tracking.html"><button>Tracking de Reparación</button></a>
+        </div>
+    </section>
+
+    <section class="product-listing">
+        <h2>Publicaciones de Componentes</h2>
+        <button onclick="showPostForm()">Publicar un Componente</button>
+        <div id="product-list">
+            <!-- Las publicaciones de los usuarios aparecerán aquí -->
+        </div>
+    </section>
+
+    <section class="post-form" id="post-form">
+        <h2>Publica tu Componente</h2>
+        <input type="text" id="component-name" placeholder="Nombre del componente">
+        <textarea id="component-description" placeholder="Descripción del componente"></textarea>
+        <input type="number" id="component-price" placeholder="Precio (USD)">
+        <button onclick="postComponent()">Publicar</button>
+        <button onclick="hidePostForm()">Cancelar</button>
+    </section>
+
+    <script>
+        let components = [];
+
+        function showPostForm() {
+            document.getElementById('post-form').style.display = 'block';
+        }
+
+        function hidePostForm() {
+            document.getElementById('post-form').style.display = 'none';
+        }
+
+        function postComponent() {
+            const name = document.getElementById('component-name').value;
+            const description = document.getElementById('component-description').value;
+            const price = document.getElementById('component-price').value;
+
+            const newComponent = {
+                name: name,
+                description: description,
+                price: price,
+                user: 'Usuario ejemplo'
+            };
+
+            components.push(newComponent);
+            updateProductList();
+            hidePostForm();
+        }
+
+        function updateProductList() {
+            const productList = document.getElementById('product-list');
+            productList.innerHTML = '';
+            components.forEach((component, index) => {
+                const div = document.createElement('div');
+                div.classList.add('product-item');
+                div.innerHTML = `
+                    <h3>${component.name}</h3>
+                    <p>${component.description}</p>
+                    <p><strong>Precio:</strong> $${component.price}</p>
+                    <p><strong>Vendedor:</strong> ${component.user}</p>
+                `;
+                productList.appendChild(div);
+            });
+        }
+    </script>
+</body>
+</html>
