@@ -1,9 +1,149 @@
-.example-card {
-    max-width: 400px;
-  }
-  
-  .example-header-image {
-    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-    background-size: cover;
-  }
-  
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Open+Sans:ital,wght@0,700;1,300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:host {
+    --primary-color: #0288D1;
+    --background-color: #F0F0F0;
+    --secondary-background-color: #E0E0E0;
+    --dark-color: #424242;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Producto Card */
+.card-product {
+  width: 100%;
+  max-width: 25rem;
+  background-color: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.card-product:hover {
+  transform: translateY(-10px);
+}
+
+.container-img {
+  position: relative;
+  height: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f5f5f5;
+}
+
+.container-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.discount {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: red;
+  color: #fff;
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+}
+
+.button-group {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.button-group span {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.button-group span:hover {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+/* Content de la tarjeta */
+.content-card-product {
+  padding: 1.5rem;
+}
+
+.stars {
+  display: flex;
+  gap: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+.stars i {
+  font-size: 1.5rem;
+  color: #ffcc00;
+}
+
+h3 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--dark-color);
+}
+
+.add-cart {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  cursor: pointer;
+  margin-right: 1rem;
+}
+
+.price {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.price span {
+  font-size: 1.4rem;
+  color: #777;
+  text-decoration: line-through;
+  margin-left: 0.5rem;
+}
+
+/* Botones de acción */
+.card-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.card-actions button {
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 2rem;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: none;
+}
+
+.card-actions button:hover {
+  background-color: #026fa3;
+}
