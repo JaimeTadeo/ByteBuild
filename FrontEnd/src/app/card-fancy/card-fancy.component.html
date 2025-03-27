@@ -1,19 +1,39 @@
-<mat-card class="example-card" appearance="outlined">
-  <mat-card-header>
-    <div mat-card-avatar class="example-header-image"></div>
-    <mat-card-title>Shiba Inu</mat-card-title>
-    <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+<mat-card class="product-card" appearance="outlined">
+  <!-- Imagen del producto y descuento -->
+  <div class="container-img">
+    <mat-card-header>
+      <mat-card-title>Producto 1</mat-card-title>
+      <mat-card-subtitle>Categoria del producto</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="/Img/imagenPrueba1.jpg" alt="Producto 1" width="250">
+    <span class="discount">-13%</span>
+  </div>
+
+  <!-- Acciones del producto -->
   <mat-card-content>
-    <p>
-      The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-      A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-      bred for hunting.
-    </p>
+    <div class="stars">
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star"></i>
+      <i class="fa-solid fa-star-half-stroke"></i>
+    </div>
+    <p class="price">$100 <span>$87</span></p>
+    <div class="button-group">
+      <button mat-icon-button aria-label="Ver producto">
+        <i class="fa-solid fa-eye"></i>
+      </button>
+      <button mat-icon-button aria-label="Añadir a favoritos">
+        <i class="fa-regular fa-heart"></i>
+      </button>
+      <button mat-icon-button aria-label="Comparar producto">
+        <i class="fa-solid fa-code-compare"></i>
+      </button>
+    </div>
   </mat-card-content>
+
+  <!-- Acciones adicionales -->
   <mat-card-actions>
-    <button mat-button>LIKE</button>
-    <button mat-button>SHARE</button>
+    <button mat-button color="primary">Añadir al carrito <i class="fa-solid fa-basket-shopping"></i></button>
   </mat-card-actions>
 </mat-card>
