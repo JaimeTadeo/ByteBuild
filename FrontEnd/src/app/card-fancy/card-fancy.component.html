@@ -1,39 +1,44 @@
-<mat-card class="product-card" appearance="outlined">
-  <!-- Imagen del producto y descuento -->
-  <div class="container-img">
-    <mat-card-header>
-      <mat-card-title>Producto 1</mat-card-title>
-      <mat-card-subtitle>Categoria del producto</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="/Img/imagenPrueba1.jpg" alt="Producto 1" width="250">
-    <span class="discount">-13%</span>
-  </div>
+<!-- Contenedor para las tarjetas de productos -->
+<div class="card-products-container">
 
-  <!-- Acciones del producto -->
-  <mat-card-content>
-    <div class="stars">
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-solid fa-star-half-stroke"></i>
+  <mat-card class="product-card" appearance="outlined">
+    <!-- Imagen del producto y descuento -->
+    <div class="container-img">
+      <mat-card-header>
+        <mat-card-title>Producto 1</mat-card-title>
+        <mat-card-subtitle>Categoria del producto</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image src="/Img/imagenPrueba1.jpg" alt="Producto 1" width="250">
+      <span class="discount">-13%</span>
     </div>
-    <p class="price">$100 <span>$87</span></p>
-    <div class="button-group">
-      <button mat-icon-button aria-label="Ver producto">
-        <i class="fa-solid fa-eye"></i>
-      </button>
-      <button mat-icon-button aria-label="Añadir a favoritos">
-        <i class="fa-regular fa-heart"></i>
-      </button>
-      <button mat-icon-button aria-label="Comparar producto">
-        <i class="fa-solid fa-code-compare"></i>
-      </button>
-    </div>
-  </mat-card-content>
 
-  <!-- Acciones adicionales -->
-  <mat-card-actions>
-    <button mat-button color="primary">Añadir al carrito <i class="fa-solid fa-basket-shopping"></i></button>
-  </mat-card-actions>
-</mat-card>
+    <!-- Acciones del producto -->
+    <mat-card-content>
+      <div class="stars">
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star-half-stroke"></i>
+      </div>
+      <p class="price">$100 <span>$87</span></p>
+      <div class="button-group">
+        <button mat-icon-button aria-label="Ver producto">
+          <i class="fa-solid fa-eye"></i>
+        </button>
+        <button mat-icon-button aria-label="Añadir a favoritos">
+          <i class="fa-regular fa-heart"></i>
+        </button>
+        <button mat-icon-button aria-label="Comparar producto">
+          <i class="fa-solid fa-code-compare"></i>
+        </button>
+      </div>
+    </mat-card-content>
+
+    <!-- Acciones adicionales -->
+    <mat-card-actions>
+      <button mat-button color="primary">Añadir al carrito <i class="fa-solid fa-basket-shopping"></i></button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>

@@ -18,7 +18,16 @@ html {
     box-sizing: border-box;
 }
 /* Producto Card */
+.card-products-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem; /* Espacio entre las tarjetas */
+  justify-content: space-between; /* Opcional, distribuye el espacio entre las tarjetas */
+  padding: 2rem;
+}
+
 .card-product {
+  width: calc(33.33% - 2rem);
   width: 100%;
   max-width: 25rem;
   background-color: #fff;
