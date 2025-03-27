@@ -27,7 +27,6 @@ html {
 }
 
 .card-product {
-  width: calc(33.33% - 2rem);
   width: 100%;
   max-width: 25rem;
   background-color: #fff;
