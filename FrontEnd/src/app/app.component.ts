@@ -7,7 +7,7 @@ import { InicioComponent } from './inicio/inicio.component'; // Asegúrate de im
   standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  imports: [RouterOutlet, InicioComponent]  // Asegúrate de importar RouterOutlet y InicioComponent
+  imports: [InicioComponent]  
 })
 export class AppComponent {
   title = 'TuProyecto';
