@@ -1,4 +1,4 @@
-package com.bytebuilder.backend.modelo;
+package com.bytebuilder.backend.Inventario.modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
@@ -6,8 +6,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.bson.types.ObjectId;
-import com.bytebuilder.backend.utils.ObjectIdSerializer;
-import com.bytebuilder.backend.utils.ObjectIdDeserializer;
+import com.bytebuilder.backend.Inventario.utils.ObjectIdSerializer;
+import com.bytebuilder.backend.Inventario.utils.ObjectIdDeserializer;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 @Document(collection = "inventario")  // Asegúrate de que el nombre de la colección esté correcto

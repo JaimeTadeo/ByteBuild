@@ -1,6 +1,6 @@
-package com.bytebuilder.backend.repositorio;
+package com.bytebuilder.backend.Inventario.repositorio;
 
-import com.bytebuilder.backend.modelo.Inventario;
+import com.bytebuilder.backend.Inventario.modelo.Inventario;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 import org.bson.types.ObjectId;
