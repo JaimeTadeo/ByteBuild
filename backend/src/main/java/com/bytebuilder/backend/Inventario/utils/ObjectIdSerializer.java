@@ -1,4 +1,4 @@
-package com.bytebuilder.backend.utils;
+package com.bytebuilder.backend.Inventario.utils;
 
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.SerializerProvider;

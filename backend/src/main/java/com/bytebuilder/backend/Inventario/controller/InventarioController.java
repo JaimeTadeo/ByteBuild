@@ -1,7 +1,7 @@
-package com.bytebuilder.backend.controller;
+package com.bytebuilder.backend.Inventario.controller;
 
-import com.bytebuilder.backend.modelo.Inventario;
-import com.bytebuilder.backend.repositorio.InventarioRepository;
+import com.bytebuilder.backend.Inventario.modelo.Inventario;
+import com.bytebuilder.backend.Inventario.repositorio.InventarioRepository;
 import org.bson.types.ObjectId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -128,7 +128,7 @@ public class InventarioController {
                 logger.error("Error al actualizar equipo con idInventario {}: {}", idInventario, e.getMessage(), e);
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
             }
-        } else {    
+        } else {
             logger.warn("Equipo con idInventario {} no encontrado", idInventario);
             return ResponseEntity.notFound().build();
         }
