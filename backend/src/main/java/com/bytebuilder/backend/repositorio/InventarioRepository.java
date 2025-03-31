@@ -3,7 +3,12 @@ package com.bytebuilder.backend.repositorio;
 import com.bytebuilder.backend.modelo.Inventario;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
+import org.bson.types.ObjectId;
+import java.util.Optional;
 
-public interface InventarioRepository extends MongoRepository<Inventario, String> {
-    // Métodos personalizados si es necesario
+@Repository
+public interface InventarioRepository extends MongoRepository<Inventario, ObjectId>
+{
+    Optional<Inventario> findByIdInventario(int idInventario); // Nuevo metodo de búsqueda por idInventario
+    void deleteByIdInventario(int idInventario); // Eliminar por idInventario
 }
