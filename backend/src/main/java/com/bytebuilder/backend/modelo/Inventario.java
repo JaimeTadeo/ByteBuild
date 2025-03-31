@@ -1,80 +1,74 @@
 package com.bytebuilder.backend.modelo;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.bson.types.ObjectId;
+import com.bytebuilder.backend.utils.ObjectIdSerializer;
+import com.bytebuilder.backend.utils.ObjectIdDeserializer;
+import org.springframework.data.mongodb.core.mapping.Field;
 
-@Document(collection = "inventario") // Se conecta con la colección en MongoDB
+@Document(collection = "inventario")  // Asegúrate de que el nombre de la colección esté correcto
 public class Inventario {
 
     @Id
-    private String id;
+    @JsonSerialize(using = ObjectIdSerializer.class)  // Serializa ObjectId como String
+    @JsonDeserialize(using = ObjectIdDeserializer.class)  // Deserializa String a ObjectId
+    private ObjectId _id;  // MongoDB ObjectId
 
-    @JsonProperty("id_inventario")
-    private int id_inventario;
+    @JsonIgnore
+    private String id; //evita mostrar un timestamp
 
-    @JsonProperty("nombre_equipo")
-    private String nombre_equipo;
+    private int idInventario;
 
-    @JsonProperty("tipo_equipo")
-    private String tipo_equipo;
+    @Field("nombreEquipo") // Mapea el campo de MongoDB correctamente
+    private String nombreEquipo;
 
-    @JsonProperty("marca")
+    @Field("tipoEquipo")
+    private String tipoEquipo;
+
     private String marca;
-
-    @JsonProperty("modelo")
     private String modelo;
-
-    @JsonProperty("especificaciones")
     private String especificaciones;
-
-    @JsonProperty("cantidad_disponible")
-    private int cantidad_disponible;
-
-    @JsonProperty("estado")
+    private int cantidadDisponible;
     private String estado;
+    private double precioUnitario;
+    private int idUsuario;
+    private int idAdmin;
 
-    @JsonProperty("precio_unitario")
-    private double precio_unitario;
-
-    @JsonProperty("id_usuario")
-    private int id_usuario;
-
-    @JsonProperty("id_admin")
-    private int id_admin;
-
-    // Getters y Setters
-
-    public String getId() {
-        return id;
+    // Getters y setters
+    public ObjectId getId() {
+        return _id;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setId(ObjectId _id) {
+        this._id = _id;
     }
 
     public int getIdInventario() {
-        return id_inventario;
+        return idInventario;
     }
 
-    public void setIdInventario(int id_inventario) {
-        this.id_inventario = id_inventario;
+    public void setIdInventario(int idInventario) {
+        this.idInventario = idInventario;
     }
 
     public String getNombreEquipo() {
-        return nombre_equipo;
+        return nombreEquipo;
     }
 
-    public void setNombreEquipo(String nombre_equipo) {
-        this.nombre_equipo = nombre_equipo;
+    public void setNombreEquipo(String nombreEquipo) {
+        this.nombreEquipo = nombreEquipo;
     }
 
     public String getTipoEquipo() {
-        return tipo_equipo;
+        return tipoEquipo;
     }
 
-    public void setTipoEquipo(String tipo_equipo) {
-        this.tipo_equipo = tipo_equipo;
+    public void setTipoEquipo(String tipoEquipo) {
+        this.tipoEquipo = tipoEquipo;
     }
 
     public String getMarca() {
@@ -102,11 +96,11 @@ public class Inventario {
     }
 
     public int getCantidadDisponible() {
-        return cantidad_disponible;
+        return cantidadDisponible;
     }
 
-    public void setCantidadDisponible(int cantidad_disponible) {
-        this.cantidad_disponible = cantidad_disponible;
+    public void setCantidadDisponible(int cantidadDisponible) {
+        this.cantidadDisponible = cantidadDisponible;
     }
 
     public String getEstado() {
@@ -118,45 +112,45 @@ public class Inventario {
     }
 
     public double getPrecioUnitario() {
-        return precio_unitario;
+        return precioUnitario;
     }
 
-    public void setPrecioUnitario(double precio_unitario) {
-        this.precio_unitario = precio_unitario;
+    public void setPrecioUnitario(double precioUnitario) {
+        this.precioUnitario = precioUnitario;
     }
 
     public int getIdUsuario() {
-        return id_usuario;
+        return idUsuario;
     }
 
-    public void setIdUsuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public int getIdAdmin() {
-        return id_admin;
+        return idAdmin;
     }
 
-    public void setIdAdmin(int id_admin) {
-        this.id_admin = id_admin;
+    public void setIdAdmin(int idAdmin) {
+        this.idAdmin = idAdmin;
     }
 
     // Método para mostrar los detalles del inventario (opcional)
     @Override
     public String toString() {
         return "Inventario{" +
-                "id='" + id + '\'' +
-                ", id_inventario=" + id_inventario +
-                ", nombre_equipo='" + nombre_equipo + '\'' +
-                ", tipo_equipo='" + tipo_equipo + '\'' +
+                "_id='" + (_id != null ? _id.toHexString() : "null") + '\'' +  // Convierte un ObjectId a String
+                ", idInventario=" + idInventario +
+                ", nombreEquipo='" + nombreEquipo + '\'' +
+                ", tipoEquipo='" + tipoEquipo + '\'' +
                 ", marca='" + marca + '\'' +
                 ", modelo='" + modelo + '\'' +
                 ", especificaciones='" + especificaciones + '\'' +
-                ", cantidad_disponible=" + cantidad_disponible +
+                ", cantidadDisponible=" + cantidadDisponible +
                 ", estado='" + estado + '\'' +
-                ", precio_unitario=" + precio_unitario +
-                ", id_usuario=" + id_usuario +
-                ", id_admin=" + id_admin +
+                ", precioUnitario=" + precioUnitario +
+                ", idUsuario=" + idUsuario +
+                ", idAdmin=" + idAdmin +
                 '}';
     }
 }
