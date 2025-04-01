@@ -93,14 +93,14 @@ export class RegistroComponent implements OnInit {
   }
 
   registrarConGoogle(): void {
-    // google sign in logica
+    // Sign in google
     console.log('Registro con Google');
   }
 
   onSubmit(): void {
     if (this.registroForm.valid) {
       const formData = this.registroForm.value;
-      // api
+      // Api 
       this.http.post('/api/registro', formData).subscribe({
         next: (response) => {
           this.router.navigate(['/verificacion']);
