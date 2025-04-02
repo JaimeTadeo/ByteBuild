@@ -1,0 +1,74 @@
+<div class="product-registration">
+    <h2>Registro de Productos</h2>
+    
+    <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="product-form">
+      <!-- Información Básica -->
+      <div class="form-section">
+        <h3>Información Básica</h3>
+        
+        <div class="form-group">
+          <label for="nombre">Nombre del Producto</label>
+          <input 
+            type="text" 
+            id="nombre" 
+            formControlName="nombre"
+            placeholder="Ej: NVIDIA GeForce RTX 3080"
+            aria-label="Nombre del producto"
+            title="Nombre del producto"
+            required
+          >
+          <div class="error-message" *ngIf="productForm.get('nombre')?.hasError('required')">
+            Nombre es requerido
+          </div>
+        </div>
+  
+        <div class="form-row">
+          <div class="form-group">
+            <label for="categoria">Categoría</label>
+            <select 
+              id="categoria" 
+              formControlName="categoria"
+              (change)="onCategoryChange($event)"
+              aria-label="Seleccionar categoría"
+              title="Seleccionar categoría"
+            >
+              <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="precio">Precio (Bs)</label>
+            <input 
+              type="number" 
+              id="precio" 
+              formControlName="precio"
+              step="0.01"
+              min="0.01"
+              placeholder="Ej: 2599.99"
+              aria-label="Precio del producto"
+              title="Precio del producto"
+              required
+            >
+            <div class="error-message" *ngIf="productForm.get('precio')?.hasError('min')">
+              El precio debe ser mayor a 0
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="stock">Stock Disponible</label>
+            <input 
+              type="number" 
+              id="stock" 
+              formControlName="stock"
+              min="0"
+              placeholder="Ej: 15"
+              aria-label="Cantidad en stock"
+              title="Cantidad en stock"
+              required
+            >
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="imagen">URL de la Imagen</label>
+  </div>
