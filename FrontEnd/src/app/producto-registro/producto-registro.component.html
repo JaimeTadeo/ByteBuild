@@ -1,74 +1,162 @@
 <div class="product-registration">
-    <h2>Registro de Productos</h2>
-    
-    <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="product-form">
-      <!-- Información Básica -->
-      <div class="form-section">
-        <h3>Información Básica</h3>
-        
+  <h2>Registro de Inventario</h2>
+  
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="product-form">
+    <!-- Sección de Información Básica -->
+    <div class="form-section">
+      <h3>Información General del Producto</h3>
+      
+      <div class="form-group">
+        <label for="nombre_equipo">Nombre del Equipo *</label>
+        <input 
+          type="text" 
+          id="nombre_equipo" 
+          formControlName="nombre_equipo"
+          placeholder="Ej: Controlador RGB Corsair iCUE"
+          aria-describedby="nombre-error"
+        >
+        <div id="nombre-error" class="error-message">
+          {{ getErrorMessage('nombre_equipo') }}
+        </div>
+      </div>
+
+      <div class="form-row">
         <div class="form-group">
-          <label for="nombre">Nombre del Producto</label>
+          <label for="tipo_equipo">Tipo de Equipo *</label>
+          <select 
+            id="tipo_equipo" 
+            formControlName="tipo_equipo"
+            aria-describedby="tipo-error"
+          >
+            <option *ngFor="let tipo of tiposEquipo" [value]="tipo">{{ tipo }}</option>
+          </select>
+          <div id="tipo-error" class="error-message">
+            {{ getErrorMessage('tipo_equipo') }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="marca">Marca *</label>
           <input 
             type="text" 
-            id="nombre" 
-            formControlName="nombre"
-            placeholder="Ej: NVIDIA GeForce RTX 3080"
-            aria-label="Nombre del producto"
-            title="Nombre del producto"
-            required
+            id="marca" 
+            formControlName="marca"
+            placeholder="Ej: Corsair"
+            aria-describedby="marca-error"
           >
-          <div class="error-message" *ngIf="productForm.get('nombre')?.hasError('required')">
-            Nombre es requerido
+          <div id="marca-error" class="error-message">
+            {{ getErrorMessage('marca') }}
           </div>
         </div>
-  
-        <div class="form-row">
-          <div class="form-group">
-            <label for="categoria">Categoría</label>
-            <select 
-              id="categoria" 
-              formControlName="categoria"
-              (change)="onCategoryChange($event)"
-              aria-label="Seleccionar categoría"
-              title="Seleccionar categoría"
-            >
-              <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
-            </select>
-          </div>
-  
-          <div class="form-group">
-            <label for="precio">Precio (Bs)</label>
-            <input 
-              type="number" 
-              id="precio" 
-              formControlName="precio"
-              step="0.01"
-              min="0.01"
-              placeholder="Ej: 2599.99"
-              aria-label="Precio del producto"
-              title="Precio del producto"
-              required
-            >
-            <div class="error-message" *ngIf="productForm.get('precio')?.hasError('min')">
-              El precio debe ser mayor a 0
-            </div>
-          </div>
-  
-          <div class="form-group">
-            <label for="stock">Stock Disponible</label>
-            <input 
-              type="number" 
-              id="stock" 
-              formControlName="stock"
-              min="0"
-              placeholder="Ej: 15"
-              aria-label="Cantidad en stock"
-              title="Cantidad en stock"
-              required
-            >
-          </div>
-        </div>
-  
+      </div>
+
+      <div class="form-row">
         <div class="form-group">
-          <label for="imagen">URL de la Imagen</label>
-  </div>
+          <label for="modelo">Modelo *</label>
+          <input 
+            type="text" 
+            id="modelo" 
+            formControlName="modelo"
+            placeholder="Ej: iCUE Lighting Node Pro"
+            aria-describedby="modelo-error"
+          >
+          <div id="modelo-error" class="error-message">
+            {{ getErrorMessage('modelo') }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="estado">Estado *</label>
+          <select 
+            id="estado" 
+            formControlName="estado"
+            aria-describedby="estado-error"
+          >
+            <option *ngFor="let estado of estados" [value]="estado">{{ estado | titlecase }}</option>
+          </select>
+          <div id="estado-error" class="error-message">
+            {{ getErrorMessage('estado') }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de Inventario -->
+    <div class="form-section">
+      <h3>Detalles de Inventario</h3>
+      
+      <div class="form-row">
+        <div class="form-group">
+          <label for="cantidad_disponible">Cantidad Disponible *</label>
+          <input 
+            type="number" 
+            id="cantidad_disponible" 
+            formControlName="cantidad_disponible"
+            min="0"
+            aria-describedby="cantidad-error"
+          >
+          <div id="cantidad-error" class="error-message">
+            {{ getErrorMessage('cantidad_disponible') }}
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="precio_unitario">Precio Unitario (Bs) *</label>
+          <input 
+            type="number" 
+            id="precio_unitario" 
+            formControlName="precio_unitario"
+            step="0.01"
+            min="0.01"
+            aria-describedby="precio-error"
+          >
+          <div id="precio-error" class="error-message">
+            {{ getErrorMessage('precio_unitario') }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sección de Especificaciones -->
+    <div class="form-section">
+      <h3>Especificaciones Técnicas</h3>
+      
+      <div class="form-group">
+        <label for="especificaciones">Especificaciones *</label>
+        <textarea 
+          id="especificaciones" 
+          formControlName="especificaciones"
+          rows="5"
+          placeholder="Ejemplo para RGB: Compatible con Corsair RGB, 2 puertos LED, control por software iCUE..."
+          aria-describedby="espec-error"
+        ></textarea>
+        <div id="espec-error" class="error-message">
+          {{ getErrorMessage('especificaciones') }}
+        </div>
+      </div>
+    </div>
+
+    <!-- Campos ocultos -->
+    <input type="hidden" formControlName="id_usuario">
+    <input type="hidden" formControlName="id_admin">
+
+    <!-- Botones de acción -->
+    <div class="action-buttons">
+      <button 
+        type="submit" 
+        [disabled]="!productForm.valid"
+        class="btn-submit"
+      >
+        <i class="fas fa-save"></i> Registrar Producto
+      </button>
+      
+      <button 
+        type="button" 
+        class="btn-clear"
+        (click)="productForm.reset()"
+      >
+        <i class="fas fa-eraser"></i> Limpiar Formulario
+      </button>
+    </div>
+  </form>
+</div>
