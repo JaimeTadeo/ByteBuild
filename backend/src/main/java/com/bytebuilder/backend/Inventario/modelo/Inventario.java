@@ -19,11 +19,11 @@ public class Inventario {
     private ObjectId _id;  // MongoDB ObjectId
 
     @JsonIgnore
-    private String id; //evita mostrar un timestamp
+    private String id; // Evita mostrar un timestamp
 
     private int idInventario;
 
-    @Field("nombreEquipo") // Mapea el campo de MongoDB correctamente
+    @Field("nombreEquipo")
     private String nombreEquipo;
 
     @Field("tipoEquipo")
@@ -37,6 +37,9 @@ public class Inventario {
     private double precioUnitario;
     private int idUsuario;
     private int idAdmin;
+
+    // ✅ Nuevo campo para la imagen
+    private String imagen;
 
     // Getters y setters
     public ObjectId getId() {
@@ -135,11 +138,19 @@ public class Inventario {
         this.idAdmin = idAdmin;
     }
 
-    // Método para mostrar los detalles del inventario (opcional)
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    // Método para mostrar los detalles del inventario
     @Override
     public String toString() {
         return "Inventario{" +
-                "_id='" + (_id != null ? _id.toHexString() : "null") + '\'' +  // Convierte un ObjectId a String
+                "_id='" + (_id != null ? _id.toHexString() : "null") + '\'' +
                 ", idInventario=" + idInventario +
                 ", nombreEquipo='" + nombreEquipo + '\'' +
                 ", tipoEquipo='" + tipoEquipo + '\'' +
@@ -151,6 +162,7 @@ public class Inventario {
                 ", precioUnitario=" + precioUnitario +
                 ", idUsuario=" + idUsuario +
                 ", idAdmin=" + idAdmin +
+                ", imagen='" + imagen + '\'' +  // ✅ Mostrar imagen en el `toString()`
                 '}';
     }
 }

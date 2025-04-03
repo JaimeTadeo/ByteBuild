@@ -13,8 +13,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 @RestController
 @RequestMapping("/inventario")
+//@CrossOrigin(origins = "http://localhost:4200") // Permitir desde el front del Angular acceder
 public class InventarioController {
 
     private static final Logger logger = LoggerFactory.getLogger(InventarioController.class);

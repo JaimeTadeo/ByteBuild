@@ -10,7 +10,8 @@
         "estado": "nuevo",
         "precioUnitario": 420,
         "idUsuario": 1,
-        "idAdmin": 1
+        "idAdmin": 1,
+        "imagen": "https://hwtcomputers.com/wp-content/uploads/2024/07/PROCESADOR-INTEL-CORE-I7-12700k.png"
     },
     {
         "idInventario": 2,
@@ -23,7 +24,8 @@
         "estado": "usado",
         "precioUnitario": 450,
         "idUsuario": 2,
-        "idAdmin": 1
+        "idAdmin": 1,
+        "imagen": "https://bgamer.pro/wp-content/uploads/2024/05/ryzen9-5900x-amd.jpg"
     },
     {
         "idInventario": 3,
@@ -36,7 +38,8 @@
         "estado": "nuevo",
         "precioUnitario": 200,
         "idUsuario": 3,
-        "idAdmin": 1
+        "idAdmin": 1,
+        "imagen": "https://dlcdnwebimgs.asus.com/files/media/A9730D0E-D1A6-40C1-9282-F1BA1B13BFB4/v1/img/kv/ROG-Strix-B550-F-II.png"
     },
     {
         "idInventario": 4,
@@ -49,7 +52,8 @@
         "estado": "nuevo",
         "precioUnitario": 80,
         "idUsuario": 4,
-        "idAdmin": 1
+        "idAdmin": 1,
+        "imagen": "https://m.media-amazon.com/images/I/51xldeOITqL._AC_SL1200_.jpg"
     },
     {
         "idInventario": 5,
@@ -62,7 +66,8 @@
         "estado": "nuevo",
         "precioUnitario": 850,
         "idUsuario": 5,
-        "idAdmin": 1
+        "idAdmin": 1,
+        "imagen": "https://i.blogs.es/213d7c/rtx3080ap/1366_2000.jpg"
     },
     {
         "idInventario": 6,
@@ -75,7 +80,8 @@
         "estado": "nuevo",
         "precioUnitario": 150,
         "idUsuario": 6,
-        "idAdmin": 2
+        "idAdmin": 2,
+        "imagen": "https://m.media-amazon.com/images/I/714+49omwaL._AC_SL1500_.jpg"
     },
     {
         "idInventario": 7,
@@ -88,7 +94,8 @@
         "estado": "nuevo",
         "precioUnitario": 80,
         "idUsuario": 7,
-        "idAdmin": 2
+        "idAdmin": 2,
+        "imagen": "https://www.ubuy.com.bo/productimg/?image=aHR0cHM6Ly9tLm1lZGlhLWFtYXpvbi5jb20vaW1hZ2VzL0kvNzFDenQ5eXBJYkwuX0FDX1NMMTUwMF8uanBn.jpg"
     },
     {
         "idInventario": 8,
@@ -101,7 +108,8 @@
         "estado": "nuevo",
         "precioUnitario": 120,
         "idUsuario": 8,
-        "idAdmin": 2
+        "idAdmin": 2,
+        "imagen": "https://m.media-amazon.com/images/I/71SDlG7ws6L.jpg"
     },
     {
         "idInventario": 9,
@@ -114,7 +122,8 @@
         "estado": "nuevo",
         "precioUnitario": 100,
         "idUsuario": 9,
-        "idAdmin": 2
+        "idAdmin": 2,
+        "imagen": "https://m.media-amazon.com/images/I/51oclTFjIFL.jpg"
     },
     {
         "idInventario": 10,
@@ -127,7 +136,8 @@
         "estado": "usado",
         "precioUnitario": 150,
         "idUsuario": 10,
-        "idAdmin": 2
+        "idAdmin": 2,
+        "imagen": "https://www.ptytec.com/upload/images/product/8312751733256865.jpg"
     },
     {
         "idInventario": 11,
@@ -140,7 +150,8 @@
         "estado": "nuevo",
         "precioUnitario": 120,
         "idUsuario": 11,
-        "idAdmin": 3
+        "idAdmin": 3,
+        "imagen": "https://img.creative.com/inline/products/23484/table_img/ae-5_table_img1.jpg"
     },
     {
         "idInventario": 12,
@@ -153,7 +164,8 @@
         "estado": "nuevo",
         "precioUnitario": 30,
         "idUsuario": 12,
-        "idAdmin": 3
+        "idAdmin": 3,
+        "imagen": "https://hitachi-lg.com/include/app/data/product_data_sp/2_c2da7049.png"
     },
     {
         "idInventario": 13,
@@ -166,7 +178,8 @@
         "estado": "usado",
         "precioUnitario": 60,
         "idUsuario": 13,
-        "idAdmin": 3
+        "idAdmin": 3,
+        "imagen": "https://sampler.com.uy/imgs/productos/productos34_48864.jpg"
     },
     {
         "idInventario": 14,
@@ -179,6 +192,7 @@
         "estado": "nuevo",
         "precioUnitario": 50,
         "idUsuario": 14,
-        "idAdmin": 3
+        "idAdmin": 3,
+        "imagen": "https://res.cloudinary.com/corsair-pwa/image/upload/f_auto/q_auto/v1673563028/akamai/pdp/7000-series/7000x-02/assets/images/COMMANDER_CORE_XT.png"
     }
 ]
