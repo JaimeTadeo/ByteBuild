@@ -10,6 +10,7 @@ import { RouterOutlet } from '@angular/router';
     RouterOutlet 
   ]
 })
+
 export class AppComponent {
-  title = 'ByteBuilder';
+  title = 'ByteBuild';
 }
