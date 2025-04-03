@@ -36,7 +36,7 @@ public class UsuarioController {
                     return ResponseEntity.notFound().build();
                 });
     }
-    
+
     @PostMapping
     public ResponseEntity<Usuario> createUsuario(@RequestBody Usuario usuario) {
         logger.info("Creando nuevo usuario: {}", usuario.getNombre());
@@ -48,6 +48,7 @@ public class UsuarioController {
         logger.info("Intentando actualizar usuario con idUsuario: {}", idUsuario);
         return usuarioRepository.findByIdUsuario(idUsuario).map(usuario -> {
             usuario.setNombre(usuarioDetails.getNombre());
+            usuario.setApellido(usuarioDetails.getApellido());
             usuario.setCorreo(usuarioDetails.getCorreo());
             usuario.setPassword(usuarioDetails.getPassword());
             usuario.setRol(usuarioDetails.getRol());

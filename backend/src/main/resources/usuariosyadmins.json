@@ -1,28 +1,32 @@
 [
     {
       "idUsuario": 1,
-      "nombre": "Carlos Pérez",
+      "nombre": "Carlos",
+      "apellido": "Pérez",
       "correo": "carlos.perez@example.com",
       "password": "hashed_password_1",
       "rol": "usuario"
     },
     {
       "idUsuario": 2,
-      "nombre": "María Gómez",
+      "nombre": "María",
+      "apellido": "Gómez",
       "correo": "maria.gomez@example.com",
       "password": "hashed_password_2",
       "rol": "usuario"
     },
     {
       "idUsuario": 3,
-      "nombre": "Luis Fernández",
+      "nombre": "Luis",
+      "apellido": "Fernández",
       "correo": "luis.fernandez@example.com",
       "password": "hashed_password_3",
       "rol": "usuario"
     },
     {
       "idUsuario": 4,
-      "nombre": "Admin Principal",
+      "nombre": "Admin",
+      "apellido": "Principal",
       "correo": "admin@example.com",
       "password": "hashed_password_admin",
       "rol": "admin"
