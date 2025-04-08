@@ -14,5 +14,4 @@ public class SaludoController {
         String nombre = request.get("nombre");  // Acceder al nombre desde el cuerpo de la solicitud
         return ResponseEntity.ok("¡Hola, " + nombre + "!");
     }
-
 }

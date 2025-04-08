@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
-//import { AuthService } from '../../services/auth.service'; // Servicio de autenticación
 
 @Component({
   selector: 'app-producto-registro',
@@ -12,79 +11,56 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './producto-registro.component.html',
   styleUrls: ['./producto-registro.component.css']
 })
+
 export class ProductoRegistroComponent {
   productForm: FormGroup;
-  estados = ['nuevo', 'usado', 'reacondicionado'];
-  tiposEquipo = [
-    'GPU', 'CPU', 'RAM', 'Almacenamiento', 
-    'PlacaBase', 'FuentePoder', 'Cooler',
-    'Controlador RGB', 'Periférico', 'Monitor'
-  ];
+  private apiUrl = 'http://localhost:8080/inventario'; // URL del backend
 
   constructor(
     private fb: FormBuilder,
     private http: HttpClient,
-    private router: Router,
-    //private authService: AuthService
+    private router: Router
   ) {
-   // const user = this.authService.getCurrentUser();
-    
     this.productForm = this.fb.group({
-      nombre_equipo: ['', [Validators.required, Validators.minLength(3)]],
-      tipo_equipo: ['GPU', Validators.required],
-      marca: ['', Validators.required],
-      modelo: ['', Validators.required],
-      especificaciones: ['', Validators.required],
-      cantidad_disponible: [0, [Validators.required, Validators.min(0)]],
+      idInventario: [null, Validators.required],
+      nombreEquipo: ['', [Validators.required, Validators.minLength(3)]],
+      tipoEquipo: ['', [Validators.required]],
+      marca: ['', [Validators.required]],
+      modelo: ['', [Validators.required]],
+      especificaciones: ['', [Validators.required]],
+      cantidadDisponible: [1, [Validators.required, Validators.min(1)]],
       estado: ['nuevo', Validators.required],
-      precio_unitario: [0, [Validators.required, Validators.min(0.01)]],
-      //id_usuario: [user?.id || null, Validators.required],
-      //id_admin: [user?.adminId || null, Validators.required]
+      precioUnitario: [0.01, [Validators.required, Validators.min(0.01)]],
+      idUsuario: [null, [Validators.required]],
+      idAdmin: [null, [Validators.required]],
+      imagen: ['', [Validators.required, Validators.pattern('(https?://.*\.(?:png|jpg|jpeg|gif|svg))')]] // URL válida de imagen
     });
   }
 
   onSubmit() {
-    if (this.productForm.valid) {
-      const formData = {
-        ...this.productForm.value,
-        especificaciones: JSON.stringify(this.productForm.value.especificaciones)
-      };
-
-      this.http.post('/api/inventario', formData).subscribe({
-        next: (response) => {
-          this.router.navigate(['/inventario']);
-          this.showSuccessAlert();
-        },
-        error: (error) => {
-          console.error('Error al registrar:', error);
-          this.showErrorAlert();
-        }
-      });
+    if (this.productForm.invalid) {
+      console.log('Formulario inválido');
+      alert('Por favor, completa todos los campos correctamente.');
+      return;
     }
-  }
 
-  showSuccessAlert() {
-    alert('Producto registrado exitosamente!');
-  }
+    const productData = this.productForm.value;
+    console.log('Enviando producto:', productData);
 
-  showErrorAlert() {
-    alert('Error al registrar el producto. Por favor intente nuevamente.');
-  }
+    // Configuración de headers para JSON
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-  getErrorMessage(controlName: string): string {
-    const control = this.productForm.get(controlName);
-    
-    if (control?.errors) {
-      if (control.hasError('required')) {
-        return 'Este campo es obligatorio';
+    // Enviar la solicitud POST al backend
+    this.http.post(this.apiUrl, productData, { headers }).subscribe({
+      next: (response) => {
+        console.log('Producto registrado exitosamente:', response);
+        alert('Producto registrado con éxito');
+        this.router.navigate(['/productos']); // Redirigir después del registro
+      },
+      error: (error) => {
+        console.error('Error al registrar el producto:', error);
+        alert('Hubo un error al registrar el producto');
       }
-      if (control.hasError('minlength')) {
-        return `Mínimo ${control.errors?.['minlength'].requiredLength} caracteres`;
-      }
-      if (control.hasError('min')) {
-        return `El valor mínimo permitido es ${control.errors?.['min'].min}`;
-      }
-    }
-    return '';
+    });
   }
 }
