@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <section class="comparacion-container container">
   <h1 class="heading-1">Comparador de Componentes</h1>
   
@@ -17,7 +19,6 @@
         class="resultado-item"
         (click)="agregarAComparacion(componente)"
       >
-    
         <span>{{ componente.nombre }}</span>
         <span class="precio">{{ componente.precio | currency:'USD':'symbol':'1.0-0' }}</span>
       </div>

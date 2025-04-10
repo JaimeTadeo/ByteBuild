@@ -1,20 +1,25 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-producto-registro',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, HttpClientModule, RouterModule],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    RouterModule,
+    NavbarComponent // Componente navbar
+  ],
   templateUrl: './producto-registro.component.html',
   styleUrls: ['./producto-registro.component.css']
 })
-
 export class ProductoRegistroComponent {
   productForm: FormGroup;
-  private apiUrl = 'http://localhost:8080/inventario'; // URL del backend
+  private apiUrl = 'http://localhost:8080/inventario';
 
   constructor(
     private fb: FormBuilder,
@@ -33,33 +38,27 @@ export class ProductoRegistroComponent {
       precioUnitario: [0.01, [Validators.required, Validators.min(0.01)]],
       idUsuario: [null, [Validators.required]],
       idAdmin: [null, [Validators.required]],
-      imagen: ['', [Validators.required, Validators.pattern('(https?://.*\.(?:png|jpg|jpeg|gif|svg))')]] // URL válida de imagen
+      imagen: ['', [Validators.required, Validators.pattern('(https?://.*\.(?:png|jpg|jpeg|gif|svg))')]]
     });
   }
 
   onSubmit() {
     if (this.productForm.invalid) {
-      console.log('Formulario inválido');
       alert('Por favor, completa todos los campos correctamente.');
       return;
     }
 
-    const productData = this.productForm.value;
-    console.log('Enviando producto:', productData);
-
-    // Configuración de headers para JSON
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const productData = this.productForm.value;
 
-    // Enviar la solicitud POST al backend
     this.http.post(this.apiUrl, productData, { headers }).subscribe({
       next: (response) => {
-        console.log('Producto registrado exitosamente:', response);
         alert('Producto registrado con éxito');
-        this.router.navigate(['/productos']); // Redirigir después del registro
+        this.router.navigate(['/productos']);
       },
       error: (error) => {
-        console.error('Error al registrar el producto:', error);
-        alert('Hubo un error al registrar el producto');
+        console.error('Error:', error);
+        alert('Error al registrar el producto');
       }
     });
   }

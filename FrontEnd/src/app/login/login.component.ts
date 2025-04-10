@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
-    HttpClientModule
+    NavbarComponent // Componente navbar
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
@@ -38,7 +39,6 @@ export class LoginComponent {
   }
 
   loginWithGoogle(): void {
-    // google sign in 
     console.log('Login con Google');
   }
 
@@ -47,11 +47,11 @@ export class LoginComponent {
       this.loading = true;
       this.errorMessage = '';
       
-      // llamada api
+      // Simulación de llamada API
       setTimeout(() => {
         this.loading = false;
         
-        // simula auth
+        // Lógica de autenticación simulada
         if (this.loginForm.value.password === 'Password123!') {
           this.router.navigate(['/perfil']);
         } else {

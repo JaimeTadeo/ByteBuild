@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { NavbarComponent } from '../navbar/navbar.component';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 interface Componente {
@@ -18,8 +20,10 @@ interface Componente {
   templateUrl: './comparacion.component.html',
   styleUrls: ['./comparacion.component.css'],
   imports: [
-    ReactiveFormsModule, // <-- Añadir esto
-    CommonModule         // <-- Añadir esto
+    ReactiveFormsModule,
+    CommonModule,
+    RouterModule,
+    NavbarComponent // Componente navbar
   ]
 })
 export class ComparacionComponent {
@@ -27,8 +31,8 @@ export class ComparacionComponent {
   resultadosBusqueda: Componente[] = [];
   componentesSeleccionados: Componente[] = [];
   Object = Object;
-  
-  // Datos de ejemplo (deberías obtenerlos de un servicio)
+
+  // Datos de ejemplo
   componentes: Componente[] = [
     {
       id: 1,
@@ -43,7 +47,17 @@ export class ComparacionComponent {
       },
       imagen: '/assets/cpu-amd.jpg'
     },
-    // ... más componentes
+    {
+      id: 2,
+      nombre: 'RTX 4080',
+      tipo: 'GPU',
+      precio: 2500,
+      especificaciones: {
+        VRAM: '16GB GDDR6X',
+        'Ancho de banda': '256-bit',
+        'Consumo energético': '320W'
+      }
+    }
   ];
 
   constructor() {
@@ -62,7 +76,7 @@ export class ComparacionComponent {
   }
 
   agregarAComparacion(componente: Componente) {
-    if (this.componentesSeleccionados.length < 4) { // Límite de comparación
+    if (this.componentesSeleccionados.length < 4) {
       this.componentesSeleccionados.push(componente);
     }
   }
@@ -70,14 +84,4 @@ export class ComparacionComponent {
   eliminarDeComparacion(index: number) {
     this.componentesSeleccionados.splice(index, 1);
   }
-
-  getSafeImage(imagePath: string | undefined): string {
-    return imagePath || 'assets/default-component.png';
-  }
-  
-  getSafeAlt(name: string | undefined): string {
-    return name ? `Imagen de ${name}` : 'Imagen de componente genérico';
-  }
-  
 }
-

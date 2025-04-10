@@ -1,0 +1,72 @@
+/* Mantenemos los estilos de tu theme principal */
+.container-navbar {
+    background-color: var(--secondary-background-color);
+    padding: 1rem 0;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+  
+  .container-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .container-logo i {
+    font-size: 3rem;
+    color: var(--primary-color);
+  }
+  
+  .container-logo h1 a {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-size: 2.5rem;
+    text-transform: uppercase;
+  }
+  
+  .menu {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  
+  .menu a {
+    text-decoration: none;
+    color: var(--dark-color);
+    font-size: 1.4rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+  }
+  
+  .menu a:hover {
+    color: var(--primary-color);
+  }
+  
+  .menu a.active {
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--primary-color);
+  }
+  
+  .container-user {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .container-user i {
+    font-size: 2.2rem;
+    color: var(--dark-color);
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+  
+  .container-user i:hover {
+    color: var(--primary-color);
+  }

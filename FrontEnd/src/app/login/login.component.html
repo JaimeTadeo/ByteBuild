@@ -1,79 +1,81 @@
+<app-navbar></app-navbar>
+
 <div class="login-container">
-    <h2>Iniciar Sesión</h2>
-    
-    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
-      <div class="form-group">
-        <label for="login-email">Correo Electrónico</label>
-        <input 
-          type="email" 
-          id="login-email"
-          formControlName="email" 
-          required
-          placeholder="ejemplo@correo.com"
-          aria-describedby="email-error"
-        >
-        <div *ngIf="loginForm.get('email')?.errors" class="error-message" id="email-error">
-          <div *ngIf="loginForm.get('email')?.hasError('required')">Campo requerido</div>
-          <div *ngIf="loginForm.get('email')?.hasError('email')">Formato de email inválido</div>
-        </div>
-      </div>
+  <h2>Iniciar Sesión</h2>
   
-      <div class="form-group">
-        <label for="login-password">Contraseña</label>
-        <div class="password-input">
-          <input 
-            [type]="showPassword ? 'text' : 'password'" 
-            id="login-password"
-            formControlName="password" 
-            required
-            placeholder="Ingresa tu contraseña"
-            aria-describedby="password-error"
-          >
-          <button 
-            type="button" 
-            (click)="togglePasswordVisibility()"
-            aria-label="Mostrar/Ocultar contraseña"
-          >
-            {{ showPassword ? 'Ocultar' : 'Mostrar' }}
-          </button>
-        </div>
-        <div *ngIf="loginForm.get('password')?.errors" class="error-message" id="password-error">
-          <div *ngIf="loginForm.get('password')?.hasError('required')">Campo requerido</div>
-        </div>
-      </div>
-  
-      <div class="form-options">
-        <a routerLink="/recuperar-contrasena" class="forgot-password">¿Olvidaste tu contraseña?</a>
-      </div>
-  
-      <button 
-        type="submit" 
-        [disabled]="!loginForm.valid || loading"
-        aria-label="Iniciar sesión"
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+    <div class="form-group">
+      <label for="login-email">Correo Electrónico</label>
+      <input 
+        type="email" 
+        id="login-email"
+        formControlName="email" 
+        required
+        placeholder="ejemplo@correo.com"
+        aria-describedby="email-error"
       >
-        <span *ngIf="!loading">Ingresar</span>
-        <span *ngIf="loading">Cargando...</span>
-      </button>
-  
-      <div *ngIf="errorMessage" class="error-message server-error">
-        {{ errorMessage }}
+      <div *ngIf="loginForm.get('email')?.errors" class="error-message" id="email-error">
+        <div *ngIf="loginForm.get('email')?.hasError('required')">Campo requerido</div>
+        <div *ngIf="loginForm.get('email')?.hasError('email')">Formato de email inválido</div>
       </div>
-    </form>
-  
-    <div class="social-login">
-      <p>O inicia sesión con</p>
-      <button 
-        type="button" 
-        class="google-btn" 
-        (click)="loginWithGoogle()"
-        aria-label="Iniciar sesión con Google"
-      >
-        <img src="assets/google-icon.svg" alt="Logo de Google">
-        Continuar con Google
-      </button>
     </div>
-  
-    <p class="signup-link">
-      ¿No tienes cuenta? <a routerLink="/registro">Regístrate</a>
-    </p>
+
+    <div class="form-group">
+      <label for="login-password">Contraseña</label>
+      <div class="password-input">
+        <input 
+          [type]="showPassword ? 'text' : 'password'" 
+          id="login-password"
+          formControlName="password" 
+          required
+          placeholder="Ingresa tu contraseña"
+          aria-describedby="password-error"
+        >
+        <button 
+          type="button" 
+          (click)="togglePasswordVisibility()"
+          aria-label="Mostrar/Ocultar contraseña"
+        >
+          {{ showPassword ? 'Ocultar' : 'Mostrar' }}
+        </button>
+      </div>
+      <div *ngIf="loginForm.get('password')?.errors" class="error-message" id="password-error">
+        <div *ngIf="loginForm.get('password')?.hasError('required')">Campo requerido</div>
+      </div>
+    </div>
+
+    <div class="form-options">
+      <a routerLink="/recuperar-contrasena" class="forgot-password">¿Olvidaste tu contraseña?</a>
+    </div>
+
+    <button 
+      type="submit" 
+      [disabled]="!loginForm.valid || loading"
+      aria-label="Iniciar sesión"
+    >
+      <span *ngIf="!loading">Ingresar</span>
+      <span *ngIf="loading">Cargando...</span>
+    </button>
+
+    <div *ngIf="errorMessage" class="error-message server-error">
+      {{ errorMessage }}
+    </div>
+  </form>
+
+  <div class="social-login">
+    <p>O inicia sesión con</p>
+    <button 
+      type="button" 
+      class="google-btn" 
+      (click)="loginWithGoogle()"
+      aria-label="Iniciar sesión con Google"
+    >
+      <img src="assets/google-icon.svg" alt="Logo de Google">
+      Continuar con Googlez
+    </button>
   </div>
+
+  <p class="signup-link">
+    ¿No tienes cuenta? <a routerLink="/registro">Regístrate</a>
+  </p>
+</div>
