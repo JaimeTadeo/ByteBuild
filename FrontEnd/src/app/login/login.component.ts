@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { NavbarComponent } from '../navbar/navbar.component';
+
 
 @Component({
   selector: 'app-login',
@@ -12,7 +12,6 @@ import { NavbarComponent } from '../navbar/navbar.component';
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
-    NavbarComponent // Componente navbar
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']

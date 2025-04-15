@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { NavbarComponent } from '../navbar/navbar.component';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 interface Componente {
@@ -23,7 +22,6 @@ interface Componente {
     ReactiveFormsModule,
     CommonModule,
     RouterModule,
-    NavbarComponent // Componente navbar
   ]
 })
 export class ComparacionComponent {

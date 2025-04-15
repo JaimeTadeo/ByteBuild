@@ -3,7 +3,6 @@ import { InventarioService } from '../inventario.service';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatTableModule } from '@angular/material/table';
-import { NavbarComponent } from '../navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -18,7 +17,6 @@ import { MatInputModule } from '@angular/material/input';
     FormsModule,
     MatTableModule,
     CurrencyPipe,
-    NavbarComponent,
     RouterModule,
     MatIconModule,
     MatButtonModule,

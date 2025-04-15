@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
-import { NavbarComponent } from '../navbar/navbar.component';
+
 
 @Component({
   selector: 'app-producto-registro',
@@ -12,7 +12,6 @@ import { NavbarComponent } from '../navbar/navbar.component';
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
-    NavbarComponent // Componente navbar
   ],
   templateUrl: './producto-registro.component.html',
   styleUrls: ['./producto-registro.component.css']
