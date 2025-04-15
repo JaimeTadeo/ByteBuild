@@ -8,7 +8,7 @@ import { ProductoRegistroComponent } from './producto-registro/producto-registro
 import { InventarioComponent } from './inventario/inventario.component';
 
 export const routes: Routes = [
-  { path: '', component: InicioComponent },
+  { path: '', component: InicioComponent, title:'Inicio' },
   { path: 'comparacion', component: ComparacionComponent },
   { path: 'tracking', component: TrackingComponent },
   { path: 'registro', component: RegistroComponent },
