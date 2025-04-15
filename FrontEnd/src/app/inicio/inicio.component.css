@@ -1,4 +1,11 @@
 
+:host{
+    --primary-color: #0288D1;
+    --background-color: #F0F0F0;
+    --secondary-background-color: #E0E0E0;
+    --dark-color: #424242;
+}
+
 /* UTILIDADES */
 .container {
     max-width: 120rem;
