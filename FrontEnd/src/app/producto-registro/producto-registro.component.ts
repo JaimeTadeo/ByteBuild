@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
+import { HeaderComponent } from '../header/header.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 
 @Component({
@@ -12,6 +14,8 @@ import { Router, RouterModule } from '@angular/router';
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
+    HeaderComponent,
+    NavbarComponent
   ],
   templateUrl: './producto-registro.component.html',
   styleUrls: ['./producto-registro.component.css']

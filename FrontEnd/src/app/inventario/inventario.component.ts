@@ -8,6 +8,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { HeaderComponent } from '../header/header.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 @Component({
   selector: 'app-inventario',
@@ -21,7 +23,9 @@ import { MatInputModule } from '@angular/material/input';
     MatIconModule,
     MatButtonModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    HeaderComponent,
+    NavbarComponent
   ],
   templateUrl: './inventario.component.html',
   styleUrls: ['./inventario.component.css']

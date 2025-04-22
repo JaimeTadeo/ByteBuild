@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angula
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { HeaderComponent } from '../header/header.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 
 @Component({
@@ -12,6 +14,8 @@ import { HttpClient } from '@angular/common/http';
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
+    HeaderComponent,
+    NavbarComponent
   ],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']

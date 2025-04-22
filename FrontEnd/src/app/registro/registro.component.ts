@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
+import { HeaderComponent } from '../header/header.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 
 @Component({
@@ -12,6 +14,8 @@ import { Router, RouterModule } from '@angular/router';
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
+    HeaderComponent,
+    NavbarComponent
   ],
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']

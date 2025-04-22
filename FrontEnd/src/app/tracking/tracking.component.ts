@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule, DatePipe, CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-
+import { HeaderComponent } from '../header/header.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
 interface LocationUpdate {
   timestamp: Date;
@@ -44,7 +45,9 @@ interface RepairStatus {
     CommonModule,
     FormsModule,
     DatePipe,
-    CurrencyPipe
+    CurrencyPipe,
+    HeaderComponent,
+    NavbarComponent
   ],
   providers: [DatePipe, CurrencyPipe]
 })

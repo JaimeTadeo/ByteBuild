@@ -8,9 +8,10 @@ import { RouterModule, RouterOutlet } from '@angular/router'; // Añadir RouterM
     RouterOutlet,
     RouterModule
   ],
-  templateUrl: './app.component.html', // 👈 Usar el archivo externo
+  templateUrl: './app.component.html', 
   styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
   title = 'ByteBuild';
 }
