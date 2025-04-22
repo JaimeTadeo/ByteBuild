@@ -2,153 +2,86 @@
 <app-navbar></app-navbar>
 
 <div class="product-registration">
-  <h2>Registro de Productos</h2>
-  
+  <h2>Ingresa los datos del producto</h2>
+
   <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="product-form">
-    <div class="form-section">
-      <h3>Información Básica</h3>
+    <div class="form-container">
+      <div class="form-fields">
+        <div class="form-group">
+          <label for="idInventario">ID Inventario</label>
+          <input type="number" id="idInventario" formControlName="idInventario" placeholder="Ej: 1">
+        </div>
 
-      <div class="form-group">
-        <label for="idInventario">ID Inventario</label>
-        <input 
-          type="number" 
-          id="idInventario" 
-          formControlName="idInventario"
-          placeholder="Ej: 1"
-          required
-        >
-        <div class="error-message" *ngIf="productForm.get('idInventario')?.hasError('required')">
-          El ID del inventario es requerido
+        <div class="form-group">
+          <label for="nombreEquipo">Nombre del producto</label>
+          <input type="text" id="nombreEquipo" formControlName="nombreEquipo" placeholder="Ej: Procesador Intel Core i7-12700K">
+        </div>
+
+        <div class="form-group">
+          <label for="tipoEquipo">Tipo de equipo</label>
+          <input type="text" id="tipoEquipo" formControlName="tipoEquipo" placeholder="Ej: Procesador">
+        </div>
+
+        <div class="form-group">
+          <label for="marca">Marca</label>
+          <input type="text" id="marca" formControlName="marca" placeholder="Ej: Intel">
+        </div>
+
+        <div class="form-group">
+          <label for="modelo">Modelo</label>
+          <input type="text" id="modelo" formControlName="modelo" placeholder="Ej: Core i7-12700K">
+        </div>
+
+        <div class="form-group">
+          <label for="especificaciones">Especificaciones</label>
+          <input type="text" id="especificaciones" formControlName="especificaciones" placeholder="Ej: 12 núcleos, 20 hilos, 3.6 GHz">
+        </div>
+
+        <div class="form-group">
+          <label for="cantidadDisponible">Stock Disponible</label>
+          <input type="number" id="cantidadDisponible" formControlName="cantidadDisponible" min="0" placeholder="1">
+        </div>
+
+        <div class="form-group">
+          <label for="estado">Estado</label>
+          <input type="text" id="estado" formControlName="estado" placeholder="nuevo">
+        </div>
+
+        <div class="form-group">
+          <label for="precioUnitario">Precio</label>
+          <input type="number" id="precioUnitario" formControlName="precioUnitario" step="0.01" min="0.01" placeholder="Ej: 420.00">
+        </div>
+
+        <div class="form-group">
+          <label for="idUsuario">ID Usuario</label>
+          <input type="number" id="idUsuario" formControlName="idUsuario" placeholder="Ej: 1">
+        </div>
+
+        <div class="form-group">
+          <label for="idAdmin">ID Admin</label>
+          <input type="number" id="idAdmin" formControlName="idAdmin" placeholder="Ej: 1">
         </div>
       </div>
 
-      <div class="form-group">
-        <label for="nombreEquipo">Nombre del Producto</label>
-        <input 
-          type="text" 
-          id="nombreEquipo" 
-          formControlName="nombreEquipo"
-          placeholder="Ej: Procesador Intel Core i7-12700K"
-          required
-        >
-        <div class="error-message" *ngIf="productForm.get('nombreEquipo')?.hasError('required')">
-          Nombre es requerido
+      <!-- Imagen -->
+      <div class="image-upload">
+        <div class="image-preview">
+          <img src="assets/placeholder-image.png" alt="Vista previa de imagen" id="previewImage">
+          <button type="button" class="upload-icon-button" (click)="triggerFileInput()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+          </button>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="tipoEquipo">Tipo de Equipo</label>
-        <input 
-          type="text" 
-          id="tipoEquipo" 
-          formControlName="tipoEquipo"
-          placeholder="Ej: Procesador"
-          required
-        >
+        <button type="button" class="upload-button" (click)="triggerFileInput()">Subir Imagen</button>
+        <input type="file" accept="image/*" #fileInput style="display: none;" (change)="onImageSelected($event)">
+        <input type="hidden" id="imagen" formControlName="imagen">
       </div>
-
-      <div class="form-group">
-        <label for="marca">Marca</label>
-        <input 
-          type="text" 
-          id="marca" 
-          formControlName="marca"
-          placeholder="Ej: Intel"
-          required
-        >
-      </div>
-
-      <div class="form-group">
-        <label for="modelo">Modelo</label>
-        <input 
-          type="text" 
-          id="modelo" 
-          formControlName="modelo"
-          placeholder="Ej: Core i7-12700K"
-          required
-        >
-      </div>
-
-      <div class="form-group">
-        <label for="especificaciones">Especificaciones</label>
-        <textarea 
-          id="especificaciones" 
-          formControlName="especificaciones"
-          placeholder="Ej: 12 núcleos, 20 hilos, 3.6 GHz"
-        ></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="cantidadDisponible">Stock Disponible</label>
-        <input 
-          type="number" 
-          id="cantidadDisponible" 
-          formControlName="cantidadDisponible"
-          min="0"
-          placeholder="Ej: 10"
-          required
-        >
-      </div>
-
-      <div class="form-group">
-        <label for="estado">Estado</label>
-        <select 
-          id="estado" 
-          formControlName="estado"
-          required
-        >
-          <option value="nuevo">Nuevo</option>
-          <option value="usado">Usado</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="precioUnitario">Precio (Bs)</label>
-        <input 
-          type="number" 
-          id="precioUnitario" 
-          formControlName="precioUnitario"
-          step="0.01"
-          min="0.01"
-          placeholder="Ej: 420.00"
-          required
-        >
-      </div>
-
-      <div class="form-group">
-        <label for="idUsuario">ID Usuario</label>
-        <input 
-          type="number" 
-          id="idUsuario" 
-          formControlName="idUsuario"
-          placeholder="Ej: 1"
-          required
-        >
-      </div>
-
-      <div class="form-group">
-        <label for="idAdmin">ID Admin</label>
-        <input 
-          type="number" 
-          id="idAdmin" 
-          formControlName="idAdmin"
-          placeholder="Ej: 1"
-          required
-        >
-      </div>
-
-      <div class="form-group">
-        <label for="imagen">URL de la Imagen</label>
-        <input 
-          type="text" 
-          id="imagen" 
-          formControlName="imagen"
-          placeholder="Ej: https://example.com/imagen.jpg"
-          required
-        >
-      </div>
-      
-      <button type="submit">Registrar Producto</button>
     </div>
+
+    <button type="submit" class="submit-button">Registrar producto</button>
   </form>
 </div>

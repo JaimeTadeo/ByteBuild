@@ -6,7 +6,6 @@ import { HttpClient } from '@angular/common/http';
 import { HeaderComponent } from '../header/header.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 
-
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -42,6 +41,7 @@ export class LoginComponent {
   }
 
   loginWithGoogle(): void {
+    // Aquí va la lógica de autenticación con Google
     console.log('Login con Google');
   }
 
@@ -49,13 +49,13 @@ export class LoginComponent {
     if (this.loginForm.valid) {
       this.loading = true;
       this.errorMessage = '';
-      
-      // Simulación de llamada API
+
+      // Simulación de API login
       setTimeout(() => {
         this.loading = false;
-        
-        // Lógica de autenticación simulada
-        if (this.loginForm.value.password === 'Password123!') {
+
+        const { email, password } = this.loginForm.value;
+        if (email === 'admin@correo.com' && password === 'Password123!') {
           this.router.navigate(['/perfil']);
         } else {
           this.errorMessage = 'Credenciales incorrectas';
