@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -42,7 +43,7 @@ public class InventarioController {
     @GetMapping("/buscar/{id}")
     public ResponseEntity<Inventario> obtenerPorId(@PathVariable String id) {
         try {
-            logger.info("Obteniendo por el object ID");
+            logger.info("Obteniendo por el object ID: {}", id);
             ObjectId objectId = new ObjectId(id);
             Optional<Inventario> inventario = inventarioRepository.findById(objectId);
             return inventario.map(ResponseEntity::ok)
@@ -57,7 +58,8 @@ public class InventarioController {
     @GetMapping("/buscar/idInventario/{idInventario}")
     public ResponseEntity<Inventario> obtenerPorIdInventario(@PathVariable int idInventario) {
 
-        logger.info("Obteniendo el IDinventario");
+        logger.info("Obteniendo el IDinventario: {}", idInventario);
+
         Optional<Inventario> inventario = inventarioRepository.findByIdInventario(idInventario);
 
         return inventario.map(ResponseEntity::ok)

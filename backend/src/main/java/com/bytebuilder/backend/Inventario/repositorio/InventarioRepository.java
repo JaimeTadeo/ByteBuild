@@ -12,3 +12,4 @@ public interface InventarioRepository extends MongoRepository<Inventario, Object
     Optional<Inventario> findByIdInventario(int idInventario); // Nuevo metodo de búsqueda por idInventario
     void deleteByIdInventario(int idInventario); // Eliminar por idInventario
 }
+
