@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule, DatePipe, CurrencyPipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { HeaderComponent } from '../header/header.component';
+import { NavbarComponent } from '../navbar/navbar.component';
 
-// Interfaces para el tipado de datos
 interface LocationUpdate {
   timestamp: Date;
   location: string;
@@ -43,14 +44,14 @@ interface RepairStatus {
   imports: [
     CommonModule,
     FormsModule,
-    HttpClientModule,
     DatePipe,
-    CurrencyPipe
+    CurrencyPipe,
+    HeaderComponent,
+    NavbarComponent
   ],
   providers: [DatePipe, CurrencyPipe]
 })
 export class TrackingComponent implements OnInit {
-  // Estado principal de la reparación
   repairRequest = {
     id: 'CBBA-' + Math.floor(10000 + Math.random() * 90000),
     customer: 'Juan Pérez',
@@ -67,7 +68,6 @@ export class TrackingComponent implements OnInit {
     }
   };
 
-  // Estado de UI
   loading = true;
   showMap = false;
   mapUrl = '';
@@ -75,7 +75,6 @@ export class TrackingComponent implements OnInit {
   newNotification = false;
   currentView: 'timeline' | 'details' | 'updates' = 'timeline';
 
-  // Datos simulados (en producción vendrían de una API)
   private statusMessages = {
     collection: 'Recogiendo equipo en su domicilio',
     transport: 'En transporte al taller',
@@ -91,13 +90,9 @@ export class TrackingComponent implements OnInit {
   ngOnInit(): void {
     this.initializeSampleData();
     this.simulateRealTimeUpdates();
-    
-    // Cargar datos reales en producción:
-    // this.loadRepairData();
   }
 
   private initializeSampleData(): void {
-    // Historial de estados
     this.repairRequest.statusHistory = [
       {
         id: '1',
@@ -120,7 +115,6 @@ export class TrackingComponent implements OnInit {
       }
     ];
 
-    // Actualizaciones de ubicación
     this.repairRequest.locationUpdates = [
       {
         timestamp: new Date(new Date().setHours(9, 0)),
@@ -142,7 +136,6 @@ export class TrackingComponent implements OnInit {
       }
     ];
 
-    // Registros del técnico
     this.repairRequest.technicianLogs = [
       {
         timestamp: new Date(new Date().setHours(11, 30)),
@@ -156,7 +149,6 @@ export class TrackingComponent implements OnInit {
       }
     ];
 
-    // Acciones pendientes
     this.repairRequest.pendingActions = [
       {
         id: 'part-001',
@@ -187,7 +179,6 @@ export class TrackingComponent implements OnInit {
   }
 
   private simulateRealTimeUpdates(): void {
-    // Simular actualización de ubicación
     setTimeout(() => {
       this.repairRequest.locationUpdates.push({
         timestamp: new Date(),
@@ -198,7 +189,6 @@ export class TrackingComponent implements OnInit {
       this.newNotification = true;
     }, 15000);
 
-    // Simular nueva actualización del técnico
     setTimeout(() => {
       this.repairRequest.technicianLogs.push({
         timestamp: new Date(),
@@ -209,18 +199,14 @@ export class TrackingComponent implements OnInit {
     }, 30000);
   }
 
-  // Métodos de UI
   respondToPart(partId: string, decision: 'approved' | 'rejected'): void {
     const part = this.repairRequest.pendingActions.find(p => p.id === partId);
     if (part) {
       part.status = decision;
-      
-      // Registrar la decisión en el log
       this.repairRequest.technicianLogs.push({
         timestamp: new Date(),
         message: `Cliente ${decision === 'approved' ? 'aprobó' : 'rechazó'} el reemplazo de ${part.name} (${part.cost} Bs.)`
       });
-
       this.calculateTotalEstimate();
       this.newNotification = true;
     }
@@ -239,7 +225,6 @@ export class TrackingComponent implements OnInit {
   }
 
   viewPartDetails(part: PartReplacement): void {
-    // Implementar modal o vista detallada
     alert(`Detalle de pieza:\n${part.name}\nPrecio: ${part.cost} Bs.\nMotivo: ${part.description}`);
   }
 
@@ -251,24 +236,9 @@ export class TrackingComponent implements OnInit {
     }
   }
 
-  // Método para producción (ejemplo)
-  private loadRepairData(): void {
-    this.http.get<any>(`/api/repairs/${this.repairRequest.id}`).subscribe({
-      next: (data) => {
-        this.repairRequest = data;
-        this.loading = false;
-      },
-      error: (err) => {
-        console.error('Error loading repair data', err);
-        this.loading = false;
-      }
-    });
-  }
-
   getCurrentStatusClass(status: string): boolean {
     const currentStatus = this.repairRequest.statusHistory[this.repairRequest.statusHistory.length - 1]?.currentStatus;
     const statusOrder = ['collection', 'transport', 'diagnosis', 'repair', 'return'];
     return statusOrder.indexOf(currentStatus) >= statusOrder.indexOf(status);
   }
-
 }

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators, AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Router, RouterModule } from '@angular/router';
+import { HeaderComponent } from '../header/header.component';
+import { NavbarComponent } from '../navbar/navbar.component';
+
 
 @Component({
   selector: 'app-registro',
@@ -10,8 +13,9 @@ import { Router, RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    RouterModule
+    RouterModule,
+    HeaderComponent,
+    NavbarComponent
   ],
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
@@ -93,14 +97,12 @@ export class RegistroComponent implements OnInit {
   }
 
   registrarConGoogle(): void {
-    // Sign in google
     console.log('Registro con Google');
   }
 
   onSubmit(): void {
     if (this.registroForm.valid) {
       const formData = this.registroForm.value;
-      // Api 
       this.http.post('/api/registro', formData).subscribe({
         next: (response) => {
           this.router.navigate(['/verificacion']);
